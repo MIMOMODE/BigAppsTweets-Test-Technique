@@ -46,11 +46,24 @@ export const timelineRouter = createTRPCRouter({
       
     }),
   create: protectedProcedure
-    .input(z.object({ content: z.string() })) // Update 'text' to 'content'
+    .input(z.object({ content: z.string() }))
     .mutation(async ({ input: { content }, ctx }) => {
       const timeline = await ctx.db.timeline.create({
         data: { content, userId: ctx.session.user.id },
       });
       return timeline;
+    }),
+    toggleLike: protectedProcedure.input(z.object({id: z.string()})).mutation(async ({ input: { id }, ctx }) =>{
+      const data = { TimelineId: id, userId: ctx.session.user.id }
+      const existingPost = await ctx.db.like.findUnique({
+        where: { userId_TimelineId: data }
+      })
+    if(existingPost == null){
+      await ctx.db.like.create({ data })
+      return { addedLike: true }
+    }else{
+      await ctx.db.like.delete({ where: { userId_TimelineId: data } })
+      return { addedLike: true }
+    }
     }),
 });

@@ -18,7 +18,7 @@ function RecetPosts(){
   });
 
   return <InfinitePostList 
-  posts={posts.data?.pages.flatMap((page) => page.timeline)} 
+  posts={posts.data?.pages.flatMap((page) => page.timeline)}
   isError={posts.isError}
   isLoading={posts.isLoading}
   hasMore={posts.hasNextPage}
