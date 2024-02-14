@@ -133,7 +133,7 @@ function PostCard({
             {dateTimeFormatter.format(createdAt)}
           </span>
         </div>
-        <p className="whitespace-pre-wrap">{content}</p>
+        <p className="whitespace-pre-wrap" dangerouslySetInnerHTML={{ __html: makeLinksClickable(content) }} />
         <HeartButton
           onClick={handleToggleLike}
           isLoading={toggleLike.isLoading}
@@ -193,3 +193,11 @@ function HeartButton({
     </button>
   );
 }
+
+function makeLinksClickable(text: string): string {
+  const urlRegex = /(https?:\/\/[^\s]+)/g;
+  const blueLinkStyle = 'color: blue; text-decoration: underline; cursor: pointer;';
+
+  return text.replace(urlRegex, `<a href='$1' target='_blank' style='${blueLinkStyle}'>$1</a>`);
+}
+
