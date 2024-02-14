@@ -18,13 +18,37 @@ function Form(){
         updateTextArea(textArea);
         textAreaRef.current = textArea
     }, [])
+    const trpcUtils = api.useUtils();
     useLayoutEffect(() =>{
         updateTextArea(textAreaRef.current)
     }, [inputValue])
     const createPost = api.timeline.create.useMutation({
         onSuccess: (newTimeline: any) => {
-          console.log(newTimeline);
           setInputValue("");
+          if (session.status !== "authenticated") return
+
+          trpcUtils.timeline.infiniteFeed.setInfiniteData({}, (oldData) =>{
+            if (oldData == null || oldData.pages[0] == null) return
+            const newCacheTimeline= {
+                ...newTimeline,
+                likeCount: 0,
+                likedByMe: false,
+                user: {
+                    id: session.data?.user.id || null,
+                    name: session.data?.user.name || null,
+                    image: session.data?.user.image || null,
+                }
+            }
+            return {
+                ...oldData,
+                pages: [{
+                    ...oldData.pages[0],
+                    posts: [newCacheTimeline, oldData.pages[0].posts]
+                }
+                ],
+                ...oldData.pages.slice(1)
+            }
+          })
         }
       });
       

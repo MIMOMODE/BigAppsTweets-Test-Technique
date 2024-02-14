@@ -49,7 +49,7 @@ export function SideNav(){
                     </span>
                     </HeartIconeHoverEffect></button>
             </li>
-        ) : 
+        ) :
         <li>
         <button onClick={() =>void signOut()}>                
         <HeartIconeHoverEffect>
