@@ -1,4 +1,4 @@
-# Application de Réseau Social - Test Technique
+# Application de Réseau Social - Test Technique pour l'entreprise BigApps
 
 ## Description
 
@@ -6,11 +6,11 @@ Ce projet est une application de réseau social simple permettant aux utilisateu
 
 ## Fonctionnalités
 
-- **Posting** : Les utilisateurs peuvent publier des messages sur leur timeline personnelle.
-- **Reading** : Les utilisateurs peuvent voir la timeline d'autres utilisateurs.
-- **Following** : Les utilisateurs peuvent s'abonner aux timelines d'autres utilisateurs et voir une liste agrégée de toutes leurs souscriptions.
+- **Posting** : Les utilisateurs peuvent publier des messages sur leur timeline personnelle (FINI).
+- **Reading** : Les utilisateurs peuvent voir la timeline d'autres utilisateurs (FINI).
+- **Following** : Les utilisateurs peuvent s'abonner aux timelines d'autres utilisateurs et voir une liste agrégée de toutes leurs souscriptions (FINI).
 - **Mentions** (feature optionnel) : Les utilisateurs peuvent mentionner d'autres utilisateurs dans leurs messages avec le symbole “@”.
-- **Links** (feature optionnel) : Les utilisateurs peuvent inclure des liens cliquables dans leurs messages.
+- **Links** (feature optionnel) : Les utilisateurs peuvent inclure des liens cliquables dans leurs messages (FINI).
 - **Direct Messages** (feature optionnel) : Les utilisateurs peuvent envoyer des messages privés à d'autres utilisateurs.
 
 ## Prérequis
@@ -27,19 +27,13 @@ Pour démarrer le projet, suivez ces étapes :
 1. Clonez le dépôt du projet :
 
 ```bash
-git clone https://github.com/BigApps-Lab/social-network-kata.git
+git clone https://github.com/MIMOMODE/BigAppsTweets-Travail.git
 ```
 
 2. Déplacez-vous dans le répertoire du projet :
 
 ```bash
-cd social-network-kata
-```
-
-Renommer le fichier .env.exemple :
-
-```bash
-mv .env.exemple .env
+cd bigappstweets
 ```
 
 3. Construisez et démarrez les conteneurs avec Docker Compose :
@@ -84,17 +78,7 @@ Cette commande arrêtera et supprimera les conteneurs créés par Docker Compose
 
 ## Structure du Projet
 
-- `app/` : Contient le code source de l'application Next.js.
+- `src/` : Contient le code source de l'application Next.js.
 - `prisma/` : Contient le schéma de la base de données et les migrations Prisma.
 - `Dockerfile` : Définition pour construire l'image Docker de l'application.
 - `docker-compose.yml` : Configuration pour démarrer l'application avec ses services associés.
-
-## Ressources pour Aider le Candidat
-
-Pour en savoir plus sur les technologies utilisées dans ce projet, consultez les documentations officielles :
-
-- [Prisma Documentation](https://www.prisma.io/)
-- [Next.js Documentation](https://nextjs.org/docs)
-- [Tailwind CSS Documentation](https://tailwindcss.com/)
-
-# social-network-kata
